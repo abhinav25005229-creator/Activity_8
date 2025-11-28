@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PulseMag Online - Magazine Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg: #f3f4f6;
+            --card-bg: #ffffff;
+            --primary: #2563eb;
+            --primary-soft: #dbeafe;
+            --accent: #f97316;
+            --text-main: #0f172a;
+            --text-muted: #6b7280;
+            --border-radius: 14px;
+            --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #0f172a;
+            color: #e5e7eb;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .top-bar {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .top-bar span {
+            opacity: 0.9;
+        }
+
+        .top-bar a {
+            margin-left: 1rem;
+            color: #9ca3af;
+        }
+
+        .top-bar a:hover {
+            color: #ffffff;
+        }
+
+        .nav {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0.9rem 1.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #f97316, #2563eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: white;
+        }
+
+        .brand-name {
+            font-weight: 800;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+        }
+
+        .brand-tag {
+            font-size: 0.7rem;
+            color: #9ca3af;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a {
+            color: #e5e7eb;
+            opacity: 0.85;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: #fff;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .nav-cta button {
+            border-radius: 999px;
+            border: 1px solid #4b5563;
+            background: transparent;
+            color: #e5e7eb;
+            padding: 0.4rem 0.9rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .nav-cta button.primary {
+            background: #f97316;
+            border-color: #f97316;
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .nav-cta button.primary:hover {
+            background: #ea580c;
+        }
+
+        /* LAYOUT */
+
+        main {
+            max-width: 1150px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1.5rem;
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+            gap: 1.5rem;
+        }
+
+        .hero-main {
+            background: #020617;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            color: #e5e7eb;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.9;
+            transform: scale(1.03);
+        }
+
+        .hero-badge {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .hero-tagline {
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            font-size: 0.8rem;
+            background: rgba(15, 23, 42, 0.85);
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+        }
+
+        .hero-content {
+            padding: 1.25rem 1.4rem 1.4rem;
+        }
+
+        .hero-category {
+            font-size: 0.75rem;
+            color: #93c5fd;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero-summary {
+            font-size: 0.92rem;
+            color: #cbd5f5;
+            margin-bottom: 0.7rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #9ca3af;
+        }
+
+        .hero-meta span strong {
+            color: #e5e7eb;
+        }
+
+        .hero-meta-right {
+            display: flex;
+            gap: 0.9rem;
+        }
+
+        .hero-side {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .side-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 0.7rem;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 0.6rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .side-image {
+            height: 100%;
+            min-height: 84px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .side-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .side-content {
+            font-size: 0.82rem;
+        }
+
+        .side-category {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--primary);
+            margin-bottom: 0.15rem;
+        }
+
+        .side-title {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .side-meta {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* TOPIC CHIPS */
+
+        .topics {
+            margin-top: 1.3rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+        }
+
+        .topic-chip {
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: #e5e7eb;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        .topic-chip.active {
+            background: #111827;
+            color: #f9fafb;
+        }
+
+        .topic-chip:hover {
+            background: #111827;
+            color: #f9fafb;
+        }
+
+        /* MAIN CONTENT GRID */
+
+        .content {
+            margin-top: 1.8rem;
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
+            gap: 1.5rem;
+        }
+
+        .section-heading {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-heading span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-left: 0.25rem;
+        }
+
+        /* ARTICLE GRID */
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .article-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .article-image {
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .article-card:hover .article-image img {
+            transform: scale(1.05);
+        }
+
+        .article-body {
+            padding: 0.75rem 0.85rem 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            font-size: 0.85rem;
+        }
+
+        .article-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--primary);
+        }
+
+        .article-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .article-summary {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .article-meta {
+            margin-top: 0.4rem;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .read-more {
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .sidebar-block {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 0.9rem 0.95rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .sidebar-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.45rem;
+        }
+
+        .trend-list {
+            list-style: none;
+            font-size: 0.83rem;
+        }
+
+        .trend-list li {
+            padding: 0.35rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .trend-list li:last-child {
+            border-bottom: none;
+        }
+
+        .trend-tag {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .trend-title {
+            font-weight: 500;
+            margin-top: 0.1rem;
+        }
+
+        .trend-meta {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.05rem;
+        }
+
+        /* SIDEBAR MINI SUBSCRIBE */
+
+        .mini-sub p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .mini-sub input {
+            width: 100%;
+            padding: 0.45rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            font-size: 0.8rem;
+            outline: none;
+        }
+
+        .mini-sub input:focus {
+            border-color: var(--primary);
+        }
+
+        .mini-sub button {
+            margin-top: 0.5rem;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border-radius: 999px;
+            border: none;
+            background: var(--primary);
+            color: #f9fafb;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .mini-sub button:hover {
+            background: #1d4ed8;
+        }
+
+        .mini-note {
+            margin-top: 0.3rem;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* MAIN SUBSCRIPTION SECTION */
+
+        .subscribe-section {
+            margin-top: 2.2rem;
+            margin-bottom: 0.5rem;
+            background: radial-gradient(circle at top left, #f97316 0, #1d4ed8 40%, #020617 100%);
+            border-radius: 20px;
+            color: #e5e7eb;
+            padding: 1.3rem 1.4rem 1.5rem;
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+            gap: 1.3rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .subscribe-text h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .subscribe-text p {
+            font-size: 0.88rem;
+            color: #d1d5db;
+        }
+
+        .subscribe-highlights {
+            margin-top: 0.7rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+        }
+
+        .subscribe-pill {
+            padding: 0.22rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(148, 163, 184, 0.6);
+        }
+
+        .subscribe-form {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 16px;
+            padding: 0.9rem 1rem;
+            font-size: 0.83rem;
+        }
+
+        .subscribe-form .field {
+            margin-bottom: 0.6rem;
+        }
+
+        .subscribe-form label {
+            display: block;
+            font-size: 0.75rem;
+            margin-bottom: 0.2rem;
+            color: #d1d5db;
+        }
+
+        .subscribe-form input,
+        .subscribe-form select {
+            width: 100%;
+            padding: 0.45rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid #4b5563;
+            background: rgba(15, 23, 42, 0.9);
+            color: #f9fafb;
+            font-size: 0.8rem;
+            outline: none;
+        }
+
+        .subscribe-form input:focus,
+        .subscribe-form select:focus {
+            border-color: #93c5fd;
+        }
+
+        .plan-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .plan-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 999px;
+            border: 1px solid #4b5563;
+            cursor: pointer;
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .plan-options input {
+            width: auto;
+        }
+
+        .subscribe-form button {
+            width: 100%;
+            border-radius: 999px;
+            border: none;
+            padding: 0.55rem 0.8rem;
+            margin-top: 0.25rem;
+            background: #f97316;
+            color: #111827;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .subscribe-form button:hover {
+            background: #fb923c;
+        }
+
+        .small-print {
+            font-size: 0.72rem;
+            color: #9ca3af;
+            margin-top: 0.35rem;
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            padding: 0.9rem 1.5rem 1.3rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 980px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+            }
+
+            .article-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 800px) {
+            .nav {
+                flex-wrap: wrap;
+                gap: 0.7rem;
+            }
+
+            .nav-links {
+                display: none; /* simple mobile nav (no JS) */
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .subscribe-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 0 1rem;
+            }
+
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .top-bar {
+                display: none;
+            }
+
+            .hero-main {
+                border-radius: 14px;
+            }
+
+            .subscribe-section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="top-bar">
+        <span>Friday, 28 November 2025 • Your daily dose of stories</span>
+        <div>
+            <a href="#">Login</a>
+            <a href="#">Create Account</a>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <div class="brand">
+            <div class="brand-logo">PM</div>
+            <div>
+                <div class="brand-name">PulseMag</div>
+                <div class="brand-tag">Online Magazine</div>
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a href="#top">Home</a>
+            <a href="#latest">News</a>
+            <a href="#tech">Tech</a>
+            <a href="#life">Lifestyle</a>
+            <a href="#sports">Sports</a>
+            <a href="#subscribe">Subscribe</a>
+        </div>
+
+        <div class="nav-cta">
+            <button>Sign In</button>
+            <button class="primary">Subscribe</button>
+        </div>
+    </nav>
+</header>
+
+<main id="top">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <!-- Big featured article -->
+        <article class="hero-main">
+            <div class="hero-image">
+                <!-- IMAGE: Featured Story -->
+                <img src="https://images.pexels.com/photos/261949/pexels-photo-261949.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                     alt="City skyline and technology">
+                <span class="hero-badge">Featured Story</span>
+                <span class="hero-tagline">Today’s big read</span>
+            </div>
+            <div class="hero-content">
+                <div class="hero-category">Technology • Innovation</div>
+                <h1 class="hero-title">
+                    How AI is quietly reshaping everyday life across global cities
+                </h1>
+                <p class="hero-summary">
+                    From smarter healthcare to personalised education, artificial intelligence is moving
+                    out of labs and into the streets – changing the way we live, work and connect with each other.
+                </p>
+                <div class="hero-meta">
+                    <span>By <strong>Riya Mehta</strong> • 7 min read</span>
+                    <div class="hero-meta-right">
+                        <span>Published 2 hrs ago</span>
+                        <span>Updated just now</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Side featured list -->
+        <div class="hero-side">
+            <article class="side-card">
+                <div class="side-image">
+                    <img src="https://images.pexels.com/photos/935743/pexels-photo-935743.jpeg?auto=compress&cs=tinysrgb&w=800"
+                         alt="Young woman reading magazine on sofa">
+                </div>
+                <div class="side-content">
+                    <div class="side-category">Lifestyle</div>
+                    <div class="side-title">The 5-minute habits that change your day</div>
+                    <div class="side-meta">3 min read • Morning Routine</div>
+                </div>
+            </article>
+
+            <article class="side-card">
+                <div class="side-image">
+                    <!-- <img src="https://images.pexels.com/photos/3980665/pexels-photo-3980665.jpeg?auto=compress&cs=tinysrgb&w=800" -->
+                         alt="People in newsroom environment">
+                </div>
+                <div class="side-content">
+                    <div class="side-category">World</div>
+                    <div class="side-title">Inside the global newsroom of the future</div>
+                    <div class="side-meta">5 min read • Media</div>
+                </div>
+            </article>
+
+            <article class="side-card">
+                <div class="side-image">
+                    <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=800"
+                         alt="Football stadium and match">
+                </div>
+                <div class="side-content">
+                    <div class="side-category">Sports</div>
+                    <div class="side-title">The comeback season that shocked fans</div>
+                    <div class="side-meta">4 min read • Analysis</div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Topic chips -->
+    <div class="topics">
+        <span class="topic-chip active">All</span>
+        <span class="topic-chip" id="latest">Top Stories</span>
+        <span class="topic-chip" id="tech">Technology</span>
+        <span class="topic-chip" id="life">Lifestyle</span>
+        <span class="topic-chip">Business</span>
+        <span class="topic-chip">Sports</span>
+        <span class="topic-chip">Entertainment</span>
+        <span class="topic-chip">Opinion</span>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <section class="content">
+        <!-- Article list -->
+        <div>
+            <h2 class="section-heading">
+                Latest Stories <span>Curated for you</span>
+            </h2>
+
+            <div class="article-grid">
+                <!-- Card 1 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800"
+                             alt="Person using laptop in cafe">
+                    </div>
+                    <div class="article-body">
+                        <div class="article-category">Tech</div>
+                        <h3 class="article-title">Why remote work is here to stay in 2025</h3>
+                        <p class="article-summary">
+                            Startups and big companies are redesigning offices with a “remote-first”
+                            mindset. Here’s what that means for your career.
+                        </p>
+                        <div class="article-meta">
+                            <span>By Aditya Sharma • 6 min read</span>
+                            <span class="read-more">Read &rarr;</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
+                             alt="Team discussion in office">
+                    </div>
+                    <div class="article-body">
+                        <div class="article-category">Business</div>
+                        <h3 class="article-title">The new wave of young founders in India</h3>
+                        <p class="article-summary">
+                            Tier-2 cities are turning into startup hubs as young entrepreneurs
+                            build products for the world from home.
+                        </p>
+                        <div class="article-meta">
+                            <span>By Editorial Desk • 5 min read</span>
+                            <span class="read-more">Read &rarr;</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.pexels.com/photos/1231265/pexels-photo-1231265.jpeg?auto=compress&cs=tinysrgb&w=800"
+                             alt="Yoga and wellness at home">
+                    </div>
+                    <div class="article-body">
+                        <div class="article-category">Lifestyle</div>
+                        <h3 class="article-title">Designing a calm corner in your home</h3>
+                        <p class="article-summary">
+                            Tiny spaces can become powerful reset zones with the right colours,
+                            lighting and mindful objects.
+                        </p>
+                        <div class="article-meta">
+                            <span>By Nisha Rao • 4 min read</span>
+                            <span class="read-more">Read &rarr;</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.pexels.com/photos/799091/pexels-photo-799091.jpeg?auto=compress&cs=tinysrgb&w=800"
+                             alt="Basketball player in action">
+                    </div>
+                    <div class="article-body">
+                        <div class="article-category">Sports</div>
+                        <h3 class="article-title">The science behind high-pressure performance</h3>
+                        <p class="article-summary">
+                            Athletes reveal how breathing, focus and routines help them deliver
+                            when everything is on the line.
+                        </p>
+                        <div class="article-meta">
+                            <span>By Sports Desk • 7 min read</span>
+                            <span class="read-more">Read &rarr;</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg?auto=compress&cs=tinysrgb&w=800"
+                             alt="Cinema and entertainment lights">
+                    </div>
+                    <div class="article-body">
+                        <div class="article-category">Entertainment</div>
+                        <h3 class="article-title">Streaming wars: who really wins?</h3>
+                        <p class="article-summary">
+                            With more platforms than ever, viewers are spoiled for choice –
+                            but are stories getting better or just bigger?
+                        </p>
+                        <div class="article-meta">
+                            <span>By Film Column • 5 min read</span>
+                            <span class="read-more">Read &rarr;</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="article-card">
+                    <div class="article-image">
+                        <img src="https://images.pexels.com/photos/886743/pexels-photo-886743.jpeg?auto=compress&cs=tinysrgb&w=800"
+                             alt="Night city with traffic lights">
+                    </div>
+                    <div class="article-body">
+                        <div class="article-category">City Life</div>
+                        <h3 class="article-title">How night-time metros are redefining cities</h3>
+                        <p class="article-summary">
+                            Late-night transport is creating safer, more vibrant streets and
+                            opportunities for shift workers and artists alike.
+                        </p>
+                        <div class="article-meta">
+                            <span>By City Beat • 6 min read</span>
+                            <span class="read-more">Read &rarr;</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Trending -->
+            <div class="sidebar-block">
+                <h3 class="sidebar-title">Trending Now</h3>
+                <ul class="trend-list">
+                    <li>
+                        <span class="trend-tag">Opinion</span>
+                        <span class="trend-title">Why slowing down can boost creativity</span>
+                        <div class="trend-meta">2 hrs ago • 3 min read</div>
+                    </li>
+                    <li>
+                        <span class="trend-tag">Tech</span>
+                        <span class="trend-title">The hidden cost of notifications</span>
+                        <div class="trend-meta">Today • 5 min read</div>
+                    </li>
+                    <li>
+                        <span class="trend-tag">Business</span>
+                        <span class="trend-title">Inside the new co-working boom</span>
+                        <div class="trend-meta">Yesterday • 4 min read</div>
+                    </li>
+                    <li>
+                        <span class="trend-tag">World</span>
+                        <span class="trend-title">How young voters are reshaping politics</span>
+                        <div class="trend-meta">This week • 7 min read</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Mini subscribe -->
+            <div class="sidebar-block mini-sub">
+                <h3 class="sidebar-title">Get headlines in your inbox</h3>
+                <p>Subscribe to our free newsletter and never miss the stories that matter to you.</p>
+                <input type="email" placeholder="Enter your email">
+                <button>Subscribe Free</button>
+                <p class="mini-note">No spam. Only hand-picked stories.</p>
+            </div>
+        </aside>
+    </section>
+
+    <!-- MAIN SUBSCRIPTION SECTION -->
+    <section class="subscribe-section" id="subscribe">
+        <div class="subscribe-text">
+            <h2>Upgrade to PulseMag+ for the full experience</h2>
+            <p>
+                Unlock members-only deep dives, audio stories, and a clean reading experience –
+                all for less than a cup of coffee each week.
+            </p>
+            <div class="subscribe-highlights">
+                <span class="subscribe-pill">✔ Ad-free reading</span>
+                <span class="subscribe-pill">✔ Weekly magazine edition</span>
+                <span class="subscribe-pill">✔ Audio + PDF downloads</span>
+                <span class="subscribe-pill">✔ Member-only events</span>
+            </div>
+        </div>
+
+        <form class="subscribe-form">
+            <div class="field">
+                <label for="sub-name">Full Name</label>
+                <input type="text" id="sub-name" placeholder="Enter your name">
+            </div>
+
+            <div class="field">
+                <label for="sub-email">Email address</label>
+                <input type="email" id="sub-email" placeholder="you@example.com">
+            </div>
+
+            <div class="field">
+                <label>Choose your plan</label>
+                <div class="plan-options">
+                    <label>
+                        <input type="radio" name="plan" checked>
+                        Monthly
+                    </label>
+                    <label>
+                        <input type="radio" name="plan">
+                        Yearly (save 30%)
+                    </label>
+                    <label>
+                        <input type="radio" name="plan">
+                        Student
+                    </label>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="sub-frequency">Email frequency</label>
+                <select id="sub-frequency">
+                    <option>Daily briefing</option>
+                    <option>Weekday mornings</option>
+                    <option>Weekend edition only</option>
+                </select>
+            </div>
+
+            <button type="submit">Start my subscription</button>
+            <p class="small-print">
+                By continuing, you agree to our Terms and Privacy Policy.
+                You can cancel any time from your account settings.
+            </p>
+        </form>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 PulseMag Online. All rights reserved. | Built for educational/demo purposes.
+</footer>
+
+</body>
+</html>
